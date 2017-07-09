@@ -21,9 +21,10 @@ print('Today is ' + weekday[now.weekday()] + ', ' + month[now.month - 1] + ' ' +
 
 hour_suffix = 'AM'
 hour = now.hour
+if hour >= 12 and hour <= 23:
+	hour_suffix = 'PM'
 if hour > 12:
     hour = hour - 12
-    hour_suffix = 'PM'
 
 min_suffix = 's'
 if now.minute == 1:
@@ -47,10 +48,10 @@ elif now.minute >= 50:
         print('It\'s ' + str(60 - now.minute) + ' minute' + min_suffix + ' before ' + str(hour + 1) + ' ' + hour_suffix)
 elif now.minute <= 10:
     if now.second <= 15:
-        print('It\'s ' + str(now.minute - 1) + ' minute' + min_suffix + ' and ' + str(now.second) + ' second' + sec_suffix + ' after ' + str(hour + 1) + ' ' + hour_suffix)
+        print('It\'s ' + str(now.minute) + ' minute' + min_suffix + ' and ' + str(now.second) + ' second' + sec_suffix + ' after ' + str(hour + 1) + ' ' + hour_suffix)
     else:
-        print('It\'s ' + str(now.minute) + ' minute' + min_suffix + ' after ' + str(hour + 1) + ' ' + hour_suffix)
-if now.minute == 30:
+        print('It\'s ' + str(now.minute) + ' minute' + min_suffix + ' after ' + str(hour) + ' ' + hour_suffix)
+elif now.minute == 30:
     if now.second == 0:
         print('It\'s ' + str(hour) + ' ' + hour_suffix + ' on the dot')
     else:
